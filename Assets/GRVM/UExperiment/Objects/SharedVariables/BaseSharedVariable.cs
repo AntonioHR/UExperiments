@@ -35,4 +35,8 @@ namespace GRVM.UExperiment.Objects.SharedVariables
     {
 
     }
+    public abstract class IntSharedVariable : BaseSharedVariable<int>
+    {
+
+    }
 }

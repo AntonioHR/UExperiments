@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GRVM.UExperiment.Objects.SharedVariables
 {
@@ -7,9 +8,12 @@ namespace GRVM.UExperiment.Objects.SharedVariables
     {
         private enum State { PreStart, Started, Ended}
 
+        [NonSerialized]
         private float startTime;
+        [NonSerialized]
         private float endTime;
 
+        [NonSerialized]
         private State state = State.PreStart;
 
         protected override float StartValue
@@ -42,6 +46,8 @@ namespace GRVM.UExperiment.Objects.SharedVariables
                 Debug.LogError("Should not try to set a timer value manually");
             }
         }
+
+        
 
         public void Start()
         {

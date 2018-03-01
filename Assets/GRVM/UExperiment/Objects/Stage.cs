@@ -1,4 +1,5 @@
 ﻿using GRVM.UExperiment.Objects.SharedVariables;
+using System;
 using UnityEngine;
 
 namespace GRVM.UExperiment.Objects
@@ -11,9 +12,8 @@ namespace GRVM.UExperiment.Objects
             NotStarted, Running, Ended
         }
 
+        [NonSerialized]
         private State state = State.NotStarted;
-        private float startTime;
-        private float endTime;
 
 
 
@@ -24,10 +24,9 @@ namespace GRVM.UExperiment.Objects
         public AccuracyFloatVariable accuracy;
         public TimerFloatVariable timer;
 
-        public Event Started;
-        public Event Finished;
-
-
+        public SharedEvent Started;
+        public SharedEvent Finished;
+        
 
 
         public string Id { get { return id; } }
@@ -37,12 +36,15 @@ namespace GRVM.UExperiment.Objects
         public void Run()
         {
             Debug.Assert(state == State.NotStarted);
+            state = State.Running;
             timer.Start();
             Started.Fire();
         }
 
         public void Finish()
         {
+            Debug.Assert(state == State.Running);
+            state = State.Ended;
             timer.Stop();
             Finished.Fire();
         }

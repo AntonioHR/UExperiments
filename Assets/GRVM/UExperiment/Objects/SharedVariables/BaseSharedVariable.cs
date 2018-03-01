@@ -25,6 +25,7 @@ namespace GRVM.UExperiment.Objects.SharedVariables
 
         private void OnEnable()
         {
+            hideFlags = HideFlags.DontUnloadUnusedAsset;
             currentValue = StartValue;
         }
     }

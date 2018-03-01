@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GRVM.UExperiment.Objects
 {
     [CreateAssetMenu]
-    public class Event : ScriptableObject
+    public class SharedEvent : ScriptableObject
     {
         private event Action ev;
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GRVM.UExperiment.Objects.SharedVariables
 {
@@ -6,7 +7,9 @@ namespace GRVM.UExperiment.Objects.SharedVariables
     [CreateAssetMenu]
     public class AccuracyFloatVariable : FloatSharedVariable
     {
+        [NonSerialized]
         private float hits = 0;
+        [NonSerialized]
         private float hitsAndMisses = 0;
         protected override float StartValue
         {

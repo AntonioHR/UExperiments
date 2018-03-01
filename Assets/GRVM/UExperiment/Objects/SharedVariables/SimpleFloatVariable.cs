@@ -4,7 +4,7 @@ namespace GRVM.UExperiment.Objects.SharedVariables
 {
 
     [CreateAssetMenu]
-    public class SimpleFloatVar : FloatSharedVariable
+    public class SimpleFloatVariable : FloatSharedVariable
     {
         public float startValue;
 

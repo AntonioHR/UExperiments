@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b513864002821b4087275bc1a087bc8, type: 3}
-  m_Name: Sess1._Finished
+  m_Script: {fileID: 11500000, guid: 7db25025e893baf4b9e6ed8c19489e07, type: 3}
+  m_Name: Sess1.Sta1.Timer
   m_EditorClassIdentifier: 

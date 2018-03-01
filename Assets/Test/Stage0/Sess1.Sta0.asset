@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Sess1.Sta0
   m_EditorClassIdentifier: 
   id: stage_0
-  accuracy: {fileID: 11400000, guid: ff4e93b97df1d7c4c88d85001a2764c9, type: 2}
-  timer: {fileID: 0}
-  Started: {fileID: 0}
+  accuracy: {fileID: 11400000, guid: 084f8ad80fdd8634094d7f18330c4b97, type: 2}
+  timer: {fileID: 11400000, guid: 4087fed92870df948b9dc542af308a90, type: 2}
+  Started: {fileID: 11400000, guid: c03be6a23265e97499a4c27c64a4c35d, type: 2}
   Finished: {fileID: 11400000, guid: a347edfa129ecee40b8c228b2ef678b1, type: 2}

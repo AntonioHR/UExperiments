@@ -24,12 +24,20 @@ namespace GRVM.UExperiment.Objects
         public void Run()
         {
             stageIndx = -1;
-            TryRunNextEvent();
+            TryRunNextStage();
         }
 
-        private void TryRunNextEvent()
+        public void OnStageFinished()
+        {
+            stages[stageIndx].Finished.Unsubscribe(OnStageFinished);
+            TryRunNextStage();
+        }
+
+        private void TryRunNextStage()
         {
             Debug.Assert(!hasFinished);
+            
+
             stageIndx++;
             if(stageIndx >= stages.Count)
             {
@@ -38,6 +46,7 @@ namespace GRVM.UExperiment.Objects
             } else
             {
                 stages[stageIndx].Run();
+                stages[stageIndx].Finished.Subscribe(OnStageFinished);
             }
         }
     }

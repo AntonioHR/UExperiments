@@ -14,5 +14,6 @@ MonoBehaviour:
   stages:
   - {fileID: 11400000, guid: 33f344f40bcfb054eb66451f4c2dfb8f, type: 2}
   - {fileID: 11400000, guid: a2b62be3be50e3b47bfd5ad03b5482f7, type: 2}
+  - {fileID: 11400000, guid: 0ce51bc3d3ea6fb41a58102504a0cee1, type: 2}
   Timer: {fileID: 11400000, guid: 18ae5c86f73a6184d9b53ce6c53ecab0, type: 2}
   Finished: {fileID: 11400000, guid: 6ba9721557628d44c9dd56a139404798, type: 2}

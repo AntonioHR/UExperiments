@@ -39,4 +39,8 @@ namespace GRVM.UExperiment.Objects.SharedVariables
     {
 
     }
+    public abstract class StringSharedVariable : BaseSharedVariable<string>
+    {
+
+    }
 }

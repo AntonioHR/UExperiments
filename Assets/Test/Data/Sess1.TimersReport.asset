@@ -9,15 +9,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 489152a9257c1164182b3d8095116030, type: 3}
-  m_Name: Report
+  m_Name: Sess1.TimersReport
   m_EditorClassIdentifier: 
   vars:
-  - type: 0
+  - type: 2
+    label: User
+    stringVar: {fileID: 11400000, guid: c7734bbf7e2479945ab58ad8ce1f4114, type: 2}
     floatVar: {fileID: 11400000, guid: 4087fed92870df948b9dc542af308a90, type: 2}
     intVar: {fileID: 0}
   - type: 0
+    label: Stage 0 Time
+    stringVar: {fileID: 0}
+    floatVar: {fileID: 11400000, guid: 4087fed92870df948b9dc542af308a90, type: 2}
+    intVar: {fileID: 0}
+  - type: 0
+    label: Stage 1 Time
+    stringVar: {fileID: 0}
     floatVar: {fileID: 11400000, guid: 9e0e5b9918e71004da6858d1990cd8f8, type: 2}
     intVar: {fileID: 0}
   - type: 0
+    label: Stage 2 Time
+    stringVar: {fileID: 0}
     floatVar: {fileID: 11400000, guid: f9be56e75afec154b8d194253d6e1c63, type: 2}
     intVar: {fileID: 0}
+  fileName: test.csv

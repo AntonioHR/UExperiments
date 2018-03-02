@@ -8,44 +8,81 @@ namespace GRVM.UExperiment.Objects.SharedVariables.Editor
     [CustomPropertyDrawer(typeof(PrintableVar))]
     public class PrintableVarDrawer : UnityEditor.PropertyDrawer
     {
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        SerializedProperty baseProperty;
+        SerializedProperty typeProperty;
+        SerializedProperty labelProperty;
+
+        //Var Properties
+        SerializedProperty floatProperty;
+        SerializedProperty intProperty;
+        SerializedProperty stringProperty;
+
+
+
+
+        void UpdateProperties(SerializedProperty main)
         {
-            return EditorGUIUtility.singleLineHeight * 2;
+            baseProperty = main;
+            typeProperty = baseProperty.FindPropertyRelative("type");
+            labelProperty = baseProperty.FindPropertyRelative("label");
+
+            floatProperty = baseProperty.FindPropertyRelative("floatVar");
+            intProperty = baseProperty.FindPropertyRelative("intVar");
+            stringProperty = baseProperty.FindPropertyRelative("stringVar");
         }
 
-        SerializedProperty property;
+
+
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            if (property != baseProperty)
+                UpdateProperties(property);
+
+            return EditorGUI.GetPropertyHeight(typeProperty)
+                + EditorGUI.GetPropertyHeight(labelProperty)
+                + EditorGUI.GetPropertyHeight(CurrentVarProperty);
+        }
+
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            this.property = property;
+            if (property != baseProperty)
+                UpdateProperties(property);
 
-            var firstRect = new Rect(position.position, 
+            var firstRect = new Rect(position.position,
                 new Vector2(position.width, EditorGUIUtility.singleLineHeight));
             var secondRect = new Rect(position.position + new Vector2(0, firstRect.height),
                 new Vector2(position.width, EditorGUIUtility.singleLineHeight));
+            var thirdRect = new Rect(secondRect.position + new Vector2(0, secondRect.height),
+                new Vector2(position.width, EditorGUIUtility.singleLineHeight));
 
-            var typeProperty = property.FindPropertyRelative("type");
+
+
+
+            EditorGUI.PropertyField(firstRect, labelProperty);
+
+            EditorGUI.PropertyField(secondRect, typeProperty);
             
-            EditorGUI.PropertyField(firstRect, typeProperty);
-
-            var type = (PrintableVar.DataType)typeProperty.intValue;
-
-            SerializedProperty variableProperty = PropertyOfType(type);
-
-
-            EditorGUI.PropertyField(secondRect, variableProperty);
+            EditorGUI.PropertyField(thirdRect, CurrentVarProperty);
         }
 
-        private SerializedProperty PropertyOfType(PrintableVar.DataType type)
+        private SerializedProperty CurrentVarProperty
         {
-            switch (type)
+            get
             {
-                case PrintableVar.DataType.Float:
-                    return property.FindPropertyRelative("floatVar");
-                case PrintableVar.DataType.Integer:
-                    return property.FindPropertyRelative("intVar");
-                default:
-                    throw new NotImplementedException();
+                var type = (PrintableVar.DataType)typeProperty.intValue;
+                switch (type)
+                {
+                    case PrintableVar.DataType.Float:
+                        return floatProperty;
+                    case PrintableVar.DataType.Integer:
+                        return intProperty;
+                    case PrintableVar.DataType.String:
+                        return stringProperty;
+                    default:
+                        throw new NotImplementedException();
+                }
             }
         }
     }
